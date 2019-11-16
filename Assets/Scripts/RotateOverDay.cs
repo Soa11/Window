@@ -14,9 +14,11 @@ public class RotateOverDay : MonoBehaviour
     public bool fastAuto = false;
     float fastAutoTimer = 0;
     public float fastAutoDurationSeconds = 20f;
-
-
     public float nightTimeSpeedMultiplier = 2;
+
+    [Space(10)]
+    public MeshRenderer nightTimeFrame;
+    Material nightTimeFrameMaterial;
 
     const float quarter = 1f / 4f;
 
@@ -28,9 +30,10 @@ public class RotateOverDay : MonoBehaviour
 
     void Start()
     {
+        //========The default rotation in the ~~Unity Scene~~ should be set to where Midnight is! =============
         originalRotation = transform.rotation; //Save the default rotation
 
-        //========The default rotation in the ~~Unity Scene~~ should be set to where Midnight is! =============
+        nightTimeFrameMaterial = nightTimeFrame.material;
     }
 
 
@@ -45,13 +48,25 @@ public class RotateOverDay : MonoBehaviour
 
         else if (fastAuto)
         {
-
-            //float fakeDayProgress = dayProgress;
-
             if(dayProgress < quarter || dayProgress > 3 * quarter)
             {
                 //do faster
                 fastAutoTimer += Time.deltaTime * nightTimeSpeedMultiplier;
+
+                if(dayProgress < quarter)
+                {
+                    //Quadrant 1, pre-morning
+                    float t = dayProgress / quarter;
+                    Color newColor = nightTimeFrameMaterial.color;
+                    //nightTimeFrameMaterial.
+                }
+                else if(dayProgress > 3 * quarter)
+                {
+                    //Quadrant 2, post-evening
+
+                }
+
+
             }
             else if(dayProgress >quarter && dayProgress < 3*quarter)
             {
