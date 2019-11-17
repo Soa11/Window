@@ -17,8 +17,11 @@ public class RotateOverDay : MonoBehaviour
     public float nightTimeSpeedMultiplier = 2;
 
     [Space(10)]
-    public MeshRenderer nightTimeFrame;
-    Material nightTimeFrameMaterial;
+    //public MeshRenderer nightTimeFrame;
+    //Material nightTimeFrameMaterial;
+    public GameObject obj;
+    public AnimationClip anim;
+    Animation FadesAnim; 
 
     const float quarter = 1f / 4f;
 
@@ -32,13 +35,17 @@ public class RotateOverDay : MonoBehaviour
     {
         //========The default rotation in the ~~Unity Scene~~ should be set to where Midnight is! =============
         originalRotation = transform.rotation; //Save the default rotation
+        FadesAnim = obj.GetComponent<Animation>();
 
-        nightTimeFrameMaterial = nightTimeFrame.material;
+        //nightTimeFrameMaterial = nightTimeFrame.material;
     }
 
 
     void Update()
     {
+
+     
+
         secondsSinceMidnight = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
 
         if (manual) //if in manual mode
@@ -52,8 +59,11 @@ public class RotateOverDay : MonoBehaviour
             {
                 //do faster
                 fastAutoTimer += Time.deltaTime * nightTimeSpeedMultiplier;
+                FadesAnim.Play();
+                //obj.GetComponent<Animation>().Play("Fades");
 
-                if(dayProgress < quarter)
+
+                /*if(dayProgress < quarter)
                 {
                     //Quadrant 1, pre-morning
                     float t = dayProgress / quarter;
@@ -65,6 +75,7 @@ public class RotateOverDay : MonoBehaviour
                     //Quadrant 2, post-evening
 
                 }
+                */
 
 
             }
