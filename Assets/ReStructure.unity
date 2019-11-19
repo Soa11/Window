@@ -2035,17 +2035,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 2035111233}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be24726c461eb0840a2cefe11b8fb94a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9f8fb16298db82e4f88583080b4d4e4b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  manual: 0
-  manualProgressSlider: 250
-  fastAuto: 1
-  fastAutoDurationSeconds: 600
-  nightTimeSpeedMultiplier: 2
   obj: {fileID: 352713917}
   anim: {fileID: 7400000, guid: 5f479a977a096b548b73fb6673796253, type: 2}
-  showDebugValues: 1
+  showDebugValues: 0
 --- !u!1 &2113315151
 GameObject:
   m_ObjectHideFlags: 0
