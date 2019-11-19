@@ -6,7 +6,7 @@ public class RotateOverDay : MonoBehaviour
 {
     const float secondsInDay = 86400;
     float secondsSinceMidnight;
-    float dayProgress; //How far are we through the day in terms of 0-1
+    float dayProgress; //How far are we through the day in terms of 0-1 (percentage)
 
     public bool manual = false;
     public float manualProgressSlider = 250f; // arbitrary sliding scale for manual testing
@@ -30,6 +30,9 @@ public class RotateOverDay : MonoBehaviour
     
     Quaternion originalRotation;
     float lastFrameXRotation = 0; // temp variable for calculating how much to move each frame
+
+
+    bool hasPlayedAnimation = false;
 
     void Start()
     {
@@ -59,23 +62,25 @@ public class RotateOverDay : MonoBehaviour
             {
                 //do faster
                 fastAutoTimer += Time.deltaTime * nightTimeSpeedMultiplier;
-                FadesAnim.Play();
                 //obj.GetComponent<Animation>().Play("Fades");
 
 
-                /*if(dayProgress < quarter)
+                if(dayProgress < quarter)
                 {
                     //Quadrant 1, pre-morning
-                    float t = dayProgress / quarter;
-                    Color newColor = nightTimeFrameMaterial.color;
-                    //nightTimeFrameMaterial.
                 }
                 else if(dayProgress > 3 * quarter)
                 {
                     //Quadrant 2, post-evening
+                    if (!hasPlayedAnimation)
+                    {
+                        FadesAnim.Play();
+                        hasPlayedAnimation = true;
+                        Debug.Log("animation triggered");
+                    }
 
                 }
-                */
+
 
 
             }
@@ -89,17 +94,26 @@ public class RotateOverDay : MonoBehaviour
 
 
         }
-        else //if in normal mode
+        //if in realtime mode
+        else
         {
             dayProgress = secondsSinceMidnight / secondsInDay; //get day progress (t)
             manualProgressSlider = dayProgress * 500f; //update manual slider to be correct position
             fastAutoTimer = fastAutoDurationSeconds * dayProgress;
         }
 
+        //End of day cleanup stuff, resetting timers to 0 and letting animation trigger again
         if(dayProgress > 1)
         {
             dayProgress -= 1;
         }
+        if(fastAutoTimer > fastAutoDurationSeconds)
+        {
+            fastAutoTimer -= fastAutoDurationSeconds;
+            hasPlayedAnimation = false;
+        }
+        //=================================================
+
 
         float xRotation = 360 * dayProgress;        //The rotation we want to reach
         float thisFrameX = xRotation - lastFrameXRotation;        //difference between last frame rotation and this new one
@@ -110,8 +124,8 @@ public class RotateOverDay : MonoBehaviour
 
         if (showDebugValues)
         {
-            //Debug.Log("DayProgress: " + dayProgress.ToString() + " // " + "X Axis Rotation: " + transform.rotation.eulerAngles.x.ToString());
-            //Debug.Log((fastAutoDurationSeconds / nightTimeSpeedMultiplier) + (fastAutoDurationSeconds / (1 / nightTimeSpeedMultiplier)));
+            Debug.Log(dayProgress);
+
         }
     }
 }
