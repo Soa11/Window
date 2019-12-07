@@ -1,8 +1,8 @@
 ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
-    - RotateOverDay
-    - UnityTemplateProjects.SimpleCameraController
+    - Readme
+    - RealTimeRotate
     Unity.RenderPipelines.Core.Runtime.dll:
     - UnityEngine.Rendering.Volume
     - UnityEngine.Rendering.VolumeProfile
@@ -12,7 +12,6 @@ ScriptsOnlyBuild:
     - UnityEngine.Experimental.Rendering.AdditionalShadowData
     - UnityEngine.Experimental.Rendering.HDPipeline.AmbientOcclusion
     - UnityEngine.Experimental.Rendering.HDPipeline.Bloom
-    - UnityEngine.Experimental.Rendering.HDPipeline.ChromaticAberration
     - UnityEngine.Experimental.Rendering.HDPipeline.DiffusionProfileSettings
     - UnityEngine.Experimental.Rendering.HDPipeline.Exposure
     - UnityEngine.Experimental.Rendering.HDPipeline.HDAdditionalCameraData
@@ -56,15 +55,6 @@ ScriptsOnlyBuild:
     - UnityEngine.Experimental.Rendering.UI.DebugUIHandlerVector3
     - UnityEngine.Experimental.Rendering.UI.DebugUIHandlerVector4
     - UnityEngine.Experimental.Rendering.UI.UIFoldout
-    UnityEditor.Graphs.dll:
-    - UnityEditor.Graphs.AnimationBlendTree.Graph
-    - UnityEditor.Graphs.AnimationBlendTree.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.AnyStateNode
-    - UnityEditor.Graphs.AnimationStateMachine.Graph
-    - UnityEditor.Graphs.AnimationStateMachine.GraphGUI
-    - UnityEditor.Graphs.AnimationStateMachine.StateNode
-    UnityEditor.TestRunner.dll:
-    - UnityEditor.TestTools.TestRunner.TestListCacheData
     UnityEngine.UI.dll:
     - UnityEngine.UI.Button
     - UnityEngine.UI.CanvasScaler
@@ -150,8 +140,6 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9752}
     - Class: 114
-      Script: {instanceID: 9800}
-    - Class: 114
       Script: {instanceID: 9848}
     - Class: 114
       Script: {instanceID: 9850}
@@ -162,11 +150,13 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 9916}
     - Class: 114
-      Script: {instanceID: 10054}
+      Script: {instanceID: 9920}
     - Class: 114
-      Script: {instanceID: 10202}
+      Script: {instanceID: 10056}
     - Class: 114
-      Script: {instanceID: 10352}
+      Script: {instanceID: 10204}
+    - Class: 114
+      Script: {instanceID: 10354}
     - Class: 114
       Script: {instanceID: 10524}
     - Class: 114
@@ -179,8 +169,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 10752}
     - Class: 114
       Script: {instanceID: 10760}
-    - Class: 114
-      Script: {instanceID: 10796}
     - Class: 114
       Script: {instanceID: 10836}
     - Class: 114
@@ -208,37 +196,35 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 11550}
     - Class: 114
-      Script: {instanceID: 11798}
+      Script: {instanceID: 11796}
     - Class: 114
-      Script: {instanceID: 11888}
+      Script: {instanceID: 11902}
     - Class: 114
       Script: {instanceID: 11904}
     - Class: 114
-      Script: {instanceID: 11906}
+      Script: {instanceID: 12134}
     - Class: 114
-      Script: {instanceID: 12136}
+      Script: {instanceID: 12256}
     - Class: 114
-      Script: {instanceID: 12258}
+      Script: {instanceID: 12274}
     - Class: 114
-      Script: {instanceID: 12276}
+      Script: {instanceID: 12302}
     - Class: 114
-      Script: {instanceID: 12304}
+      Script: {instanceID: 12442}
     - Class: 114
-      Script: {instanceID: 12444}
+      Script: {instanceID: 12454}
     - Class: 114
       Script: {instanceID: 12456}
     - Class: 114
       Script: {instanceID: 12458}
     - Class: 114
-      Script: {instanceID: 12460}
+      Script: {instanceID: 12482}
     - Class: 114
-      Script: {instanceID: 12484}
+      Script: {instanceID: 12496}
     - Class: 114
-      Script: {instanceID: 12498}
+      Script: {instanceID: 12584}
     - Class: 114
-      Script: {instanceID: 12586}
-    - Class: 114
-      Script: {instanceID: 12590}
+      Script: {instanceID: 12588}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -762,6 +748,12 @@ ScriptsOnlyBuild:
     className: VerticalLayoutGroup
   - hash:
       serializedVersion: 2
+      Hash: 161348b482550f3ac548ede11e216b23
+    assemblyName: Assembly-CSharp.dll
+    namespaceName: 
+    className: RealTimeRotate
+  - hash:
+      serializedVersion: 2
       Hash: 71bb6a6b6c8f052f948db64c7dd3ca4f
     assemblyName: Unity.RenderPipelines.HighDefinition.Runtime.dll
     namespaceName: UnityEngine.Experimental.Rendering.HDPipeline
@@ -874,12 +866,6 @@ ScriptsOnlyBuild:
     assemblyName: Unity.Timeline.dll
     namespaceName: UnityEngine.Timeline
     className: ControlPlayableAsset
-  - hash:
-      serializedVersion: 2
-      Hash: 4cf6665cd927e117a55d813444d94539
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: RotateLerpMultiStep
   - hash:
       serializedVersion: 2
       Hash: b8a5e8091ab0b8861d2add371082c5e0
@@ -1218,12 +1204,6 @@ ScriptsOnlyBuild:
     className: DensityVolume
   - hash:
       serializedVersion: 2
-      Hash: 3f8777e2a88da70fc67b807cedec8298
-    assemblyName: Assembly-CSharp.dll
-    namespaceName: 
-    className: SunAngles
-  - hash:
-      serializedVersion: 2
       Hash: 58e68364412c67eae2bdb4954be2dcc2
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
@@ -1254,10 +1234,10 @@ ScriptsOnlyBuild:
     className: DebugUIHandlerVector2
   - hash:
       serializedVersion: 2
-      Hash: 47c32814f49cde1729b8728cff9d5ddc
+      Hash: 7982086c2c8946b7ce3658240e3c4bbb
     assemblyName: Assembly-CSharp.dll
     namespaceName: 
-    className: RotateOverDay
+    className: FastAutoRotate
   - hash:
       serializedVersion: 2
       Hash: 1315780878b6fd5dd8ab250aad4c13a5
@@ -1429,4 +1409,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/ReStructure.unity
-  playerPath: C:/Users/Soa/Documents/Github Repositories/Window/Window_Build_1/Window_1.exe
+  playerPath: C:/Users/Soa/Documents/Github Repositories/Window/RealTime_2nd_Frame/realTime_2nd_Frame_Window.exe

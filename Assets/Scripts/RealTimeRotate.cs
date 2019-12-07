@@ -29,6 +29,10 @@ public class RealTimeRotate : MonoBehaviour
     int nextTriggerHour = 0;
     float currentHour = 0;
 
+    [Space(10)]
+    public bool manual = false;
+    public float manualSlider = 0;
+
     void Start()
     {
         //========The default rotation in the ~~Unity Scene~~ should be set to where Midnight is! =============
@@ -39,6 +43,8 @@ public class RealTimeRotate : MonoBehaviour
         secondsSinceMidnight = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
         dayProgress = secondsSinceMidnight / secondsInDay; //get day progress (t)
         currentHour = secondsSinceMidnight / hour;
+
+        manualSlider = secondsSinceMidnight;
         //=============
 
         nextTriggerHour = Mathf.CeilToInt(currentHour); // figure out what the next hour is going to be
@@ -48,7 +54,15 @@ public class RealTimeRotate : MonoBehaviour
     void Update()
     {
         //Time Updates
-        secondsSinceMidnight = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
+        if (!manual)
+        {
+            secondsSinceMidnight = (float)System.DateTime.Now.TimeOfDay.TotalSeconds;
+            manualSlider = secondsSinceMidnight;
+        }
+        else if (manual)
+        {
+            secondsSinceMidnight = manualSlider;
+        }
         dayProgress = secondsSinceMidnight / secondsInDay; //get day progress (t)
         currentHour = secondsSinceMidnight / hour;
         //=============
